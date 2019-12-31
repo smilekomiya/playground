@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <style type="text/css">
+    .tab-button {
+      padding: 6px 10px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      background: #f0f0f0;
+      margin-bottom: -1px;
+      margin-right: -1px;
+    }
+    .tab-button:hover {
+      background: #e0e0e0;
+    }
+    .tab-button.active {
+      background: #e0e0e0;
+    }
+    .tab {
+      border: 1px solid #ccc;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+    <button-counter></button-counter>
+  </div>
+  <div id="blog-posts-events-demo">
+    <div :style="{ fontSize: postFontSize + 'em' }">
+      <blog-post
+        v-for="post in posts"
+        :key="post.id"
+        :post="post"
+        @enlarge-text="onEnlargeText(0.01)"
+      >
+      </blog-post>
+    </div>
+  </div>
+  <div id="custom-input">
+    <custom-input
+      @input=""
+    ></custom-input>
+  </div>
+  <div id="dynamic-component-demo" class="demo">
+    <button
+      v-for="tab in tabs"
+      v-bind:key="tab"
+      v-bind:class="['tab-button', { active: currentTab === tab }]"
+      v-on:click="currentTab = tab"
+    >{{ tab }}</button>
+
+    <component
+      v-bind:is="currentTabComponent"
+      class="tab"
+    ></component>
+
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

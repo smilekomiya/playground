@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My first Vue app</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+  <div id="app">
+    {{ message }}<br>
+    <span v-if="seen">can you see?</span>
+    <input type="button" v-on:click="toggleSeen" value="toggle" />
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>
