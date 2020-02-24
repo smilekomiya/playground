@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y5N-s5-iyw">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Y5N-s5-iyw">
                                 <rect key="frame" x="0.0" y="20" width="183" height="101"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xVS-R8-t7Q">
@@ -38,9 +38,21 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="defaultPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="l4L-SY-A5l">
+                                <rect key="frame" x="0.0" y="221" width="320" height="240"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="l4L-SY-A5l" secondAttribute="height" multiplier="1:1" id="SeR-V8-fEA"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="0eE-KF-IcZ" appends="YES" id="wTq-tb-058"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="l4L-SY-A5l" firstAttribute="top" secondItem="Y5N-s5-iyw" secondAttribute="bottom" constant="100" id="4Mu-Ge-g7o"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="l4L-SY-A5l" secondAttribute="bottom" constant="206" id="EIE-Fd-p0S"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Y5N-s5-iyw" secondAttribute="bottom" constant="546" id="SOz-Tp-K8C"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Y5N-s5-iyw" secondAttribute="trailing" constant="192" id="Y3l-0Q-tba"/>
                             <constraint firstItem="Y5N-s5-iyw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="gVG-vB-CdJ"/>
@@ -51,11 +63,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="xVS-R8-t7Q" id="gTk-e3-bo3"/>
                         <outlet property="nameTextField" destination="S8M-BS-Tcl" id="C11-J8-N7m"/>
+                        <outlet property="photoImageView" destination="l4L-SY-A5l" id="QPo-fd-II9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="0eE-KF-IcZ">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="9Mc-bI-YwO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="138.98050974512745"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto" width="320" height="320"/>
+    </resources>
 </document>
